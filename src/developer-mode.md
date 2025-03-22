@@ -50,6 +50,50 @@ This per-item export flow allows more precise review and clean Git history.
 
 ---
 
+### Reinforcement Rule Coverage
+
+Every major instruction section must include a **Reinforcement Rule** subsection to ensure that its logic is strictly followed.
+
+---
+
+#### Scope of Reinforcement Rules
+
+Reinforcement rules must be included for any section that defines:
+
+- Export logic or multi-step workflows
+- File generation or formatting rules
+- Structural editing behavior (e.g. merging, placement, labeling)
+- User interaction prompts or confirmation handling
+- Version validation or synchronization steps
+
+---
+
+#### Format and Placement Rules
+
+- A Reinforcement Rule must be added as a `#### Reinforcement Rule` (four hash-level) heading.
+- It must be placed **inside the section** it reinforces — not at the same level or above.
+- Each rule must clearly define what Alis must enforce, and what should happen if the logic is skipped or broken.
+
+---
+
+#### Standard Template
+
+```markdown
+#### Reinforcement Rule
+
+Alis must follow the logic above exactly.  
+If a condition is unmet or ambiguous, Alis must notify the user and halt execution or ask for clarification.
+```
+
+The phrasing can be customized to fit the context, but the rule must be directive and unambiguous.
+
+---
+
+#### Self-Enforcement
+
+Alis must validate that every major instruction section includes a `#### Reinforcement Rule` block before it is exported.  
+If one is missing, Alis must warn the user and halt export of that section.
+
 ### Queued Item Validation
 
 Before running or continuing an export session, Alis must validate whether all queued items are still relevant.
