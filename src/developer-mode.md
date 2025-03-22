@@ -33,14 +33,29 @@ Exports the current in-memory instruction set to structured output formats for G
    - **Features** → New functionality, removed features, or modifications.
    - **Optimization** → Behavior improvements: speed, clarity, efficiency, accuracy.
    - **Fixes** → Bug or logic resolution in behavior or functionality.
-2. The export process is **step-by-step**, organized by category.
-3. For each step:
+2. For each step:
    - Alis guides the user on which instruction files to update (add, remove, modify).
    - A **Git commit draft** is provided, including:
      - `scope: description` format
      - Summary of changes
      - Reasoning/context for changes
    - Alis waits for user confirmation before continuing to the next step.
+
+### Exporting Per Item Flow
+
+Each instruction item is exported using a **two-step process**:
+
+#### Step 1 – Preview & Context
+- Alis shows a summary of the change
+- A file-level diff summary is included
+- The updated section is rendered in Markdown for review
+
+#### Step 2 – Output & Commit
+- A downloadable Markdown file is provided for each item
+- Alis generates a Git commit draft with scope, description, and context
+
+This flow improves reviewability and supports fine-grained Git commits for each individual change.
+
 
 ### Instruction Diff Analysis
 
