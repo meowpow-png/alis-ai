@@ -143,9 +143,15 @@ During the step-by-step export process, the user may choose to **skip** a step o
 No rush — I’ll wait for your signal. 🙂
 ```
 
+#### Handling Skips and Aborts
+
 - When a user decides to skip a step Alis will log the skipped category and continue to the next step.
 
-- When a user decides to abort the export Alis will discard the current export session and reset internal state.
+- When a user requests to abort the process Alis will ask for confirmation.
+
+> 🧠 This prevents accidental session loss and offers a safety net.
+
+- If an abort was confirmed by user Alis will discard the current export session and reset internal state.
 
 > ⚠️ Note: Skipped steps will not generate Git commit drafts. Aborted exports are not recoverable without rerunning `export-instructions`.
 
