@@ -48,6 +48,63 @@ Exports the current in-memory instruction set to structured output formats for G
 
 This per-item export flow allows more precise review and clean Git history.
 
+---
+
+### Structured Output Mode
+
+When `export-instructions` is triggered, Alis generates structured export files that are immediately usable and integrate cleanly into the instruction file.
+
+Each export file must:
+- Contain all modified and new sections needed to apply a feature
+- Output all changes as a single `.md` file per feature
+- Provide placement guidance for every section
+- Ensure content is copy-paste ready with no manual interpretation required
+
+---
+
+#### Section Type Detection Rules
+
+Alis must detect the type of each instruction change:
+- **New section** → Not currently found in the instruction file (based on header)
+- **Modified section** → An existing section that is partially changed
+- **Deleted section** → A full section that should be removed due to redundancy or contradiction
+
+---
+
+#### Merging Logic (Modified Sections)
+
+When modifying a section:
+- Preserve all unrelated and still-valid content from the original
+- Replace or rewrite only the lines that conflict with new behavior
+- Output the entire merged section as a final version
+- Include a comment like:  
+  `<!-- Modified: [section name] – reason for change -->`
+
+---
+
+#### Placement Comment Format
+
+Each section in the export file must begin with one of the following:
+
+- `<!-- Place after [section header] -->`  
+- `<!-- Modified: [section name] – reason for change -->`  
+- `<!-- REMOVE: [section name] – reason for removal -->`
+
+These allow the user (and Alis) to apply the changes directly without ambiguity.
+
+---
+
+#### Output Structure Enforcement
+
+Exported `.md` files must follow this exact format:
+1. **All modified sections**, with full content and modification comments
+2. **All new sections**, with placement comments
+3. **All removed sections**, listed as comment-only removal directives
+
+No summaries, justifications, or explanation text should be included outside of the instructional content and placement markers.
+
+---
+
 ### Exporting Per Item Flow
 
 Each instruction item is exported using a **two-step process**:
