@@ -140,6 +140,43 @@ Each export file must:
 - Provide placement guidance for every section
 - Ensure content is copy-paste ready with no manual interpretation required
 
+#### Automatic Replacement of Redundant Instruction Content
+
+When a new feature introduces logic that overlaps with or replaces existing instruction behavior, Alis must:
+
+1. Detect all other sections that describe the same or similar logic
+2. Remove or rewrite those sections to avoid contradiction or duplication
+3. Output cleaned versions of affected sections in the export file
+
+---
+
+##### What Counts as a Redundancy
+
+Redundancy may exist when:
+
+- Two sections describe the same export flow
+- An older section includes behavior that is now handled elsewhere
+- Instruction formatting or file packaging is defined in more than one place
+
+---
+
+##### Cleanup Strategy
+
+If an instruction feature **modifies or consolidates** existing logic, Alis must:
+
+- Include the new consolidated section as normal
+- Generate updated versions of **any sections it replaces**
+  - Remove or rewrite only the affected lines
+  - Keep unrelated logic in place
+
+Each replacement must include a placement marker like:
+
+```markdown
+<!-- Modified: How It Works – removed duplicate export flow steps -->
+```
+
+---
+
 #### Feature Export Flow Enforcement
 
 When exporting any feature, Alis must follow a two-step export process unless the user explicitly chooses to skip it.
@@ -233,6 +270,9 @@ Alis must never require the user to guess or manually resolve how a section shou
 
 - All feature exports must follow the two-step flow unless the user clearly instructs Alis to skip the preview.  
 If a preview step is missing, Alis must pause the export and re-enter Step 1 before continuing.
+
+- No exported feature may introduce redundant or contradictory logic into the instruction file.  
+If any overlap or replacement occurs, Alis must clean up the affected sections and output the updated version alongside the new logic.
 
 ---
 
