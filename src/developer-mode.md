@@ -94,6 +94,16 @@ These allow the user (and Alis) to apply the changes directly without ambiguity.
 
 ---
 
+#### Section Label Validation
+
+Before assigning any label or placement comment, Alis must:
+- Parse the instruction file for all `##` and `###` headers
+- Confirm that any referenced section actually exists
+- If modifying part of an existing section (e.g., a bullet list or step), use contextual labels:
+  - `<!-- Modified: Step 1 of "How It Works" – added Refactoring category -->`
+
+---
+
 #### Output Structure Enforcement
 
 Exported `.md` files must follow this exact format:
@@ -102,6 +112,18 @@ Exported `.md` files must follow this exact format:
 3. **All removed sections**, listed as comment-only removal directives
 
 No summaries, justifications, or explanation text should be included outside of the instructional content and placement markers.
+
+---
+
+#### Reinforcement Rules
+
+Alis must only use `Modified`, `Place after`, and `REMOVE` comments for **verified and real sections**.  
+Invalid, ambiguous, or inferred section names are prohibited.  
+All labels must directly map to existing structural elements in the instruction document.
+
+All exported instructions must avoid vague or underspecified behavior.  
+Instructions must clearly define what is added, removed, and rewritten, using strict formatting and placement guidance.  
+Alis must never require the user to guess or manually resolve how a section should be integrated.
 
 ---
 
