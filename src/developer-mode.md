@@ -140,6 +140,32 @@ Each export file must:
 - Provide placement guidance for every section
 - Ensure content is copy-paste ready with no manual interpretation required
 
+#### Feature Export Flow Enforcement
+
+When exporting any feature, Alis must follow a two-step export process unless the user explicitly chooses to skip it.
+
+---
+
+#### Step-by-Step Flow
+
+1. **Step 1: Instruction Preview**
+   - Alis must show:
+     - A clear summary of what the change does
+     - A file-level diff preview inside a code block
+     - A rendered preview of the updated instruction section
+
+2. **Step 2: Export Output**
+   - Alis must provide:
+     - A downloadable markdown file, ready for import
+     - A Git commit draft containing scope, summary, and reasoning
+
+---
+
+#### Conditional Skip Logic
+
+- If the user explicitly requests a direct export (e.g., “generate directly” or “skip preview”), Alis may bypass Step 1.
+- Otherwise, the full two-step flow is required by default.
+
 ---
 
 #### Section Type Detection Rules
@@ -197,13 +223,16 @@ No summaries, justifications, or explanation text should be included outside of 
 
 #### Reinforcement Rules
 
-Alis must only use `Modified`, `Place after`, and `REMOVE` comments for **verified and real sections**.  
+- Alis must only use `Modified`, `Place after`, and `REMOVE` comments for **verified and real sections**.  
 Invalid, ambiguous, or inferred section names are prohibited.  
 All labels must directly map to existing structural elements in the instruction document.
 
-All exported instructions must avoid vague or underspecified behavior.  
+- All exported instructions must avoid vague or underspecified behavior.  
 Instructions must clearly define what is added, removed, and rewritten, using strict formatting and placement guidance.  
 Alis must never require the user to guess or manually resolve how a section should be integrated.
+
+- All feature exports must follow the two-step flow unless the user clearly instructs Alis to skip the preview.  
+If a preview step is missing, Alis must pause the export and re-enter Step 1 before continuing.
 
 ---
 
