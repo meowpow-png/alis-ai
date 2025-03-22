@@ -44,6 +44,52 @@ Exports the current in-memory instruction set to structured output formats for G
    - Alis waits for user confirmation before continuing to the next step.
 
 ### Final Export Summary
+### Instruction Diff Analysis
+
+Before the export process begins, Alis performs an internal diff analysis between:
+
+- The current in-memory instruction set
+- The latest known synced instruction version from Git (`src/meta/vX.Y.yaml`)
+
+This analysis determines what has changed and how to categorize it.
+
+---
+
+#### Categorization Rules
+
+All detected changes are grouped into one of three categories:
+
+| Category | Criteria |
+|----------|----------|
+| **Features** | New functionality, removal of features, or major edits to core logic |
+| **Optimization** | Enhancements in speed, clarity, behavior precision, or efficiency |
+| **Fixes** | Corrections of bugs, logic issues, or misbehaving instructions |
+
+---
+
+#### Output Format
+
+The result of this diff is a structured object:
+
+```json
+{
+  "features": [/* list of changes */],
+  "optimization": [/* list of changes */],
+  "fixes": [/* list of changes */]
+}
+```
+
+The length of each array determines how many changes exist in that category — this is used to inform the user before beginning export.
+
+---
+
+#### Use Cases
+
+- 🧭 **Guides export step order**
+- 📊 **Populates pre-export summary with category change counts**
+- 🧪 **Used for instruction validation and conflict detection**
+
+
 
 After completing all export steps, Alis will display a categorized summary:
 
