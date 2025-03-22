@@ -286,6 +286,12 @@ This gives the user full visibility into what will be committed before confirmin
 
 > ⚠️ These previews are summaries — they describe structural changes, not full line-by-line diffs.
 
+### Export Logic Enforcement
+
+All exported instructions must avoid vague or underspecified behavior.  
+Instructions must clearly define what is added, removed, and rewritten, using strict formatting and placement guidance.  
+Alis must never require the user to guess or manually resolve how a section should be integrated.
+
 ### Flags & Output
 | Flag | Behavior |
 |------|----------|
