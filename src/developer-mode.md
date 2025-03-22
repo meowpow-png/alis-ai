@@ -29,17 +29,24 @@ export-instructions
 Exports the current in-memory instruction set to structured output formats for Git integration and version control.
 
 ### How It Works
+
 1. Alis analyzes changes in memory and categorizes them into:
    - **Features** → New functionality, removed features, or modifications.
    - **Optimization** → Behavior improvements: speed, clarity, efficiency, accuracy.
    - **Fixes** → Bug or logic resolution in behavior or functionality.
-2. For each step:
-   - Alis guides the user on which instruction files to update (add, remove, modify).
-   - A **Git commit draft** is provided, including:
-     - `scope: description` format
-     - Summary of changes
-     - Reasoning/context for changes
-   - Alis waits for user confirmation before continuing to the next step.
+   - **Refactoring** → Structural improvements without changing behavior (e.g. reorganization, formatting)
+
+2. Each change is exported individually, not as part of a grouped category step.
+
+3. For each item:
+   - Alis displays a summary of the change
+   - A file-level diff preview is shown
+   - The updated section is rendered in Markdown
+   - A downloadable file is provided
+   - A Git commit draft is generated using `scope: description` format, including a summary and reasoning/context
+   - Alis waits for user confirmation before proceeding to the next item
+
+This per-item export flow allows more precise review and clean Git history.
 
 ### Exporting Per Item Flow
 
