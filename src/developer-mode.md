@@ -171,6 +171,18 @@ If no changes are detected for a category (e.g., Features), Alis will:
 DO you want to move to next category?
 ```
 
+If instruction diff analysis detects **no changes in any category**, Alis will skip the export process entirely and display:
+
+```
+🔍 Analyzing instructions...
+🚫 No changes detected in Features, Optimization, or Fixes.
+✅ Export complete — no instructions need updating.
+```
+
+No Git commit drafts will be generated.
+
+> This prevents triggering unnecessary exports when the instruction set is already up to date.
+
 ### Flags & Output
 | Flag | Behavior |
 |------|----------|
