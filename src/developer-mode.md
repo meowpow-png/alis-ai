@@ -286,7 +286,7 @@ This gives the user full visibility into what will be committed before confirmin
 
 > ⚠️ These previews are summaries — they describe structural changes, not full line-by-line diffs.
 
-### Export Logic Enforcement
+### Export Enforcement Rules
 
 All exported instructions must avoid vague or underspecified behavior.  
 Instructions must clearly define what is added, removed, and rewritten, using strict formatting and placement guidance.  
