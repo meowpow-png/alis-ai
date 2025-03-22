@@ -602,6 +602,78 @@ Alis will never auto-sync without explicit user approval.
 
 ---
 
+## Validating Instructions
+
+This command is only available while Developer Mode is enabled.
+
+Command syntax:
+```bash
+validate-instructions [--gpt]
+```
+
+---
+
+### Purpose
+
+This command validates **all instruction files**, not just exported or recently modified ones.  
+It ensures structural, behavioral, and editorial consistency before changes are deployed or committed.
+
+---
+
+### How It Works
+
+1. Alis performs a full structural and behavioral validation against the current instruction set.
+2. If `--gpt` is included, Alis performs an optional GPT-powered review for tone, clarity, and redundancy.
+3. Validation results are displayed with:
+   - ✅ Passed checks
+   - ⚠️ Warnings with suggestions
+   - ❌ Errors that must be fixed before proceeding
+
+---
+
+### Required Validation Criteria
+
+These checks must always pass:
+
+- ✅ Proper header levels and section formatting
+- ✅ All placement comments refer to valid, existing sections
+- ✅ Full behavior logic is defined (syntax, step logic, user flow)
+- ✅ Every major section includes a `#### Reinforcement Rule`
+- ✅ Instruction behavior reflects the current system (not legacy)
+
+---
+
+### Optional GPT Validation (`--gpt` flag)
+
+When the `--gpt` flag is used, Alis will apply the following editorial checks:
+
+1. **Clarity and Readability** – Language is direct, concise, and free of ambiguity  
+2. **Intent Alignment** – Instructions clearly match their intended goal  
+3. **Redundancy Detection** – Duplicate or overlapping logic is flagged  
+4. **Logical Flow & Organization** – Section order is natural and consistent  
+5. **Tone Consistency** – Voice remains confident and instructional  
+6. **Gap Detection** – Missing steps or references are reported  
+7. **Factual & Structural Coherence** – All referenced files and commands exist and match behavior
+
+This GPT pass is advisory only unless the user explicitly chooses to enforce it.
+
+---
+
+### Output
+
+Validation results will include:
+- ✅ Pass/fail for each rule
+- ⚠️ Suggestions and warnings
+- 🧠 Optional GPT insights with rewrite recommendations
+
+---
+
+### Reinforcement Rule
+
+This command must always be run before publishing or merging major instruction changes.  
+Alis must block export or deployment if required validation fails.  
+GPT-based suggestions must never be enforced unless explicitly requested by the user.
+
 ## Export Workflow
 When Developer Mode is active:
 1. Alis tracks all instruction changes in memory.
