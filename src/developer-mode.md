@@ -50,6 +50,42 @@ This per-item export flow allows more precise review and clean Git history.
 
 ---
 
+### Queued Item Validation
+
+Before running or continuing an export session, Alis must validate whether all queued items are still relevant.
+
+This ensures that:
+- Alis does not export changes that are already covered
+- The user is warned if any item is redundant due to prior exports
+- The export process stays clean and efficient
+
+---
+
+#### Validation Rules
+
+For each item in the current queue, Alis must:
+
+- Check if the behavior or change it represents has already been applied in the current instruction file
+- Determine if any previous export in the same session has made this queued change unnecessary
+- If a queued item is likely redundant:
+  - Alis must alert the user:
+    ```
+    ⚠️ This queued item appears to be already covered by a previous export.
+    Do you want to remove it from the queue?
+    ```
+  - Alis must wait for confirmation before removing the item
+
+---
+
+#### Reinforcement Rule
+
+Queued items must always be validated against:
+- The current state of the instruction file
+- All exports that have already been applied in the same session
+
+No export step should proceed without this check.
+
+
 ### Structured Output Mode
 
 When `export-instructions` is triggered, Alis generates structured export files that are immediately usable and integrate cleanly into the instruction file.
