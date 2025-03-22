@@ -151,6 +151,45 @@ Any deviation from this structure or naming must be considered invalid and shoul
 
 ---
 
+### Export Packaging
+
+After all approved items in a category are processed, Alis must generate a packaged `.zip` file.
+
+This `.zip` archive must include:
+- ✅ A `.md` file for each approved export item
+- 🧾 One `[category]-export-summary.md` file (as described in the Export Summary Format)
+
+---
+
+#### File Naming
+
+- Markdown files must follow the format:  
+  `export-[category]-[slug].md`  
+  Example: `export-feature-skip-abort.md`
+
+- ZIP bundles must follow the format:  
+  `[category]-export.zip`  
+  Example: `features-export.zip`
+
+---
+
+#### Folder Structure (Inside ZIP)
+
+```
+features-export.zip
+├── export-feature-skip-abort.md
+├── export-feature-two-step-export.md
+└── features-export-summary.md
+```
+
+---
+
+#### Reinforcement Rule
+
+Every category-level export must include a `.zip` archive.  
+This ensures all exports can be downloaded in bulk and referenced consistently by users.  
+If any required file is missing from the bundle, the export is incomplete.
+
 ### Exporting Per Item Flow
 
 Each instruction item is exported using a **two-step process**:
