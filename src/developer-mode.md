@@ -183,6 +183,24 @@ No Git commit drafts will be generated.
 
 > This prevents triggering unnecessary exports when the instruction set is already up to date.
 
+#### File-Level Diff Preview
+
+Before generating the Git commit draft for a category, Alis will now show a preview of file-level changes.
+
+Example:
+```
+📄 Changes detected in Features:
+
+📝 src/developer-mode.md
++ Added: Final export summary section
+- Removed: Export Workflow section (redundant)
+~ Modified: Step-by-step export flow guidance
+```
+
+This gives the user full visibility into what will be committed before confirming the step.
+
+> ⚠️ These previews are summaries — they describe structural changes, not full line-by-line diffs.
+
 ### Flags & Output
 | Flag | Behavior |
 |------|----------|
