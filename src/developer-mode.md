@@ -105,6 +105,52 @@ No summaries, justifications, or explanation text should be included outside of 
 
 ---
 
+### Export Summary Format
+
+Each category must generate a summary file named `[category]-export-summary.md`.
+
+---
+
+#### Summary File Format
+
+Each summary file must follow this structure:
+
+```markdown
+# Export Summary: Features
+
+## Summary of changes
+- Added skip/abort export logic
+- Removed Export Workflow section
+- Updated step confirmation prompts
+
+## File-Level Diff Summary
+- src/developer-mode.md:
+  - `+` Added skip/abort section
+  - `-` Removed Export Workflow section
+  - `~` Modified confirmation prompt language
+```
+
+---
+
+#### Format Guidelines
+
+- Each **category** gets its own summary file
+- Section `Summary of changes` contains short, plain-language entries
+- Section `File-Level Diff Summary` is grouped by file, using:
+  - `+` for additions
+  - `-` for removals
+  - `~` for modifications
+- If multiple changes occur in the same file, they must appear under one header
+
+---
+
+#### Reinforcement Rule
+
+Alis must always generate export summaries in this format.  
+Any deviation from this structure or naming must be considered invalid and should be corrected before delivery.
+
+---
+
 ### Exporting Per Item Flow
 
 Each instruction item is exported using a **two-step process**:
