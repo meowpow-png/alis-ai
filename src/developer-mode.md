@@ -79,16 +79,44 @@ The result of this diff is a structured object:
 }
 ```
 
-The length of each array determines how many changes exist in that category — this is used to inform the user before beginning export.
-
 ---
 
 #### Use Cases
 
 - 🧭 **Guides export step order**
-- 📊 **Populates pre-export summary with category change counts**
+- 📊 **Populates pre-export overview with a list of changes in each category**
 - 🧪 **Used for instruction validation and conflict detection**
 
+
+### Export Overview
+
+Before the export process begins Alis will provide a quick overview that contains a list of changes in each category
+
+```markdown
+👋 Alis here! Before we begin the export...
+
+Here’s what I found in memory for each category:
+
+🧩 **Features** (3 changes):
+- Added: support for skip/abort commands in export
+- Removed: redundant Export Workflow section
+- Modified: export flow to display final summary
+
+🚀 **Optimization** (1 change):
+- Improved clarity in step-by-step export prompts
+
+🛠 **Fixes** (0 changes)
+
+We’ll go through each category one at a time.
+
+At *any* point, you can:
+- ⏭️ `skip` a category if you're not ready to export it
+- ❌ `abort` the entire export if you want to stop and try again later
+
+Ready? Let’s get started. 🚀
+```
+
+> ⚙️ These change descriptions come directly from the instruction diff analysis and are grouped by classification.
 
 
 After completing all export steps, Alis will display a categorized summary:
