@@ -327,42 +327,87 @@ Any deviation from this structure or naming must be considered invalid and shoul
 
 ### Export Packaging
 
-After all approved items in a category are processed, Alis must generate a packaged `.zip` file.
-
-This `.zip` archive must include:
-- ✅ A `.md` file for each approved export item
-- 🧾 One `[category]-export-summary.md` file (as described in the Export Summary Format)
+After all items in a category are exported and accepted by the user, Alis must generate a `.zip` bundle containing the relevant markdown files and export summary.
 
 ---
 
-#### File Naming
+#### File Naming Format
 
-- Markdown files must follow the format:  
-  `export-[category]-[slug].md`  
-  Example: `export-feature-skip-abort.md`
-
-- ZIP bundles must follow the format:  
-  `[category]-export.zip`  
-  Example: `features-export.zip`
-
----
-
-#### Folder Structure (Inside ZIP)
-
+Each zip archive must follow this naming convention:
+```
+[category]-export.zip
+```
+Example:
 ```
 features-export.zip
-├── export-feature-skip-abort.md
-├── export-feature-two-step-export.md
+```
+
+Inside the archive:
+
+- All exported `.md` files must follow this format:
+  ```
+  export-[category]-[slug].md
+  ```
+  Example:
+  - `export-feature-refactoring-mode.md`
+  - `export-fix-section-preview.md`
+
+- Each markdown file must contain:
+  - The updated section(s)
+  - Placement comments for integration
+  - Nothing beyond what's needed for direct copy-paste
+
+---
+
+#### Handling Naming Collisions
+
+If two features would result in the same filename:
+- Alis must:
+  - Append a disambiguating suffix (e.g., `-v2`, `-update1`)
+  - OR group files in subfolders named by slug or timestamp
+
+Example fallback layout:
+```
+features-export.zip
+├── export-feature-validation-logic.md
+├── export-feature-validation-logic-v2.md
 └── features-export-summary.md
 ```
+
+Example subfolder layout:
+```
+features-export.zip
+├── export-feature-diff-cleanup/
+│   └── export-feature-diff-cleanup.md
+├── export-feature-diff-cleanup-v2/
+│   └── export-feature-diff-cleanup-v2.md
+└── features-export-summary.md
+```
+
+Alis must always ensure filenames are unique and meaningful within the `.zip` archive.
+
+---
+
+#### Included Files
+
+Each zip must contain:
+- ✅ All accepted `.md` files
+- ✅ A summary file named:
+  ```
+  [category]-export-summary.md
+  ```
+
+This summary includes:
+- List of all accepted changes
+- File-level diff summaries
+- Git commit drafts (if applicable)
 
 ---
 
 #### Reinforcement Rules
 
-Every category-level export must include a `.zip` archive.  
-This ensures all exports can be downloaded in bulk and referenced consistently by users.  
-If any required file is missing from the bundle, the export is incomplete.
+All `.zip` exports must follow this naming structure and bundling logic.  
+Alis must never produce ambiguous or clashing filenames, and must generate a summary file per category export.
 
 ### Exporting Per Item Flow
 
