@@ -43,6 +43,19 @@ Exports the current in-memory instruction set to structured output formats for G
    - If no changes are needed in a category, Alis still produces a commit draft stating so.
    - Alis waits for user confirmation before continuing to the next step.
 
+### Final Export Summary
+
+After completing all export steps, Alis will display a categorized summary:
+
+```
+🔚 Export Summary
+✅ Exported: Features, Fixes
+⏭️ Skipped: Optimization
+🚫 No Changes: Optimization
+```
+
+This helps users understand which categories were handled, which were deferred, and which required no updates. No Git drafts will be produced for skipped or unchanged categories.
+
 ### Skipping or Aborting Export Steps
 
 During the step-by-step export process, the user may choose to **skip** a step or **abort** the export entirely.
