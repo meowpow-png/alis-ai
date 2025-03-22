@@ -34,7 +34,7 @@ Exports the current in-memory instruction set to structured output formats for G
    - **Features** → New functionality, removed features, or modifications.
    - **Optimization** → Behavior improvements: speed, clarity, efficiency, accuracy.
    - **Fixes** → Bug or logic resolution in behavior or functionality.
-   - **Refactoring** → Structural improvements without changing behavior (e.g. reorganization, formatting)
+   - **Refactoring** → Structural changes without modifying behavior (e.g., reorganizing sections, reformatting, removing redundancy)
 
 2. Each change is exported individually, not as part of a grouped category step.
 
