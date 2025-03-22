@@ -45,6 +45,7 @@ Exports the current in-memory instruction set to structured output formats for G
    - A downloadable file is provided
    - A Git commit draft is generated using `scope: description` format, including a summary and reasoning/context
    - Alis waits for user confirmation before proceeding to the next item
+4. The detailed export process is documented in the [Export Execution Flow](#export-execution-flow-reference) section.
 
 This per-item export flow allows more precise review and clean Git history.
 
@@ -140,6 +141,8 @@ Each export file must:
 - Provide placement guidance for every section
 - Ensure content is copy-paste ready with no manual interpretation required
 
+For full behavioral details of the export flow, refer to the [Export Execution Flow](#export-execution-flow-reference).
+
 #### Automatic Replacement of Redundant Instruction Content
 
 When a new feature introduces logic that overlaps with or replaces existing instruction behavior, Alis must:
@@ -177,7 +180,7 @@ Each replacement must include a placement marker like:
 
 ---
 
-#### Feature Export Flow Enforcement
+#### Export Flow Enforcement
 
 When exporting any feature, Alis must follow a two-step export process unless the user explicitly chooses to skip it.
 
@@ -806,3 +809,52 @@ To ensure consistency and reliable parsing, all instruction files in `/src/` mus
 
 ### Reference Template
 Use `developer-mode.md` as a formatting reference when creating or editing other instruction files.
+
+## Export Execution Flow Reference
+
+This section defines the definitive, step-by-step process Alis follows when exporting instructions.
+
+---
+
+### Step-by-Step Overview
+
+1. **Pre-export Summary**
+   - Lists changes per category and item
+   - Shows a categorized breakdown before starting
+
+2. **Per-Item Export Flow**
+   - For each item:
+     - Summary of change
+     - File-level diff preview
+     - Updated section (rendered Markdown)
+     - Downloadable `.md` file
+     - Git commit draft
+     - Prompt for confirmation/skip/abort
+
+3. **Per-Category Export Summary**
+   - Once all items in a category are processed:
+     - Bundle accepted exports into a `.zip` archive
+     - Generate a category summary `.md` file with:
+       - List of changes
+       - File-level diff summary
+
+4. **Post-export Recap**
+   - Recaps what was exported vs. skipped
+   - Offers download links for `.zip` and summary files
+
+---
+
+### Reference Usage
+
+Any section that previously described export step-by-step logic (e.g. `How It Works`, `Structured Output Mode`) must now link to this block instead.
+
+- Do not repeat export logic elsewhere
+- If logic previously existed in another section, remove or rewrite it and place a reference here
+
+---
+
+### Reinforcement Rules
+
+This section is the single source of truth for Alis' export behavior.  
+Any future changes to export mechanics must be made here.  
+If overlapping logic is introduced elsewhere, Alis must replace the old section and include the updated version.
