@@ -40,10 +40,8 @@ Exports the current in-memory instruction set to structured output formats for G
      - `scope: description` format
      - Summary of changes
      - Reasoning/context for changes
-   - If no changes are needed in a category, Alis still produces a commit draft stating so.
    - Alis waits for user confirmation before continuing to the next step.
 
-### Final Export Summary
 ### Instruction Diff Analysis
 
 Before the export process begins, Alis performs an internal diff analysis between:
@@ -118,6 +116,7 @@ Ready? Let’s get started. 🚀
 
 > ⚙️ These change descriptions come directly from the instruction diff analysis and are grouped by classification.
 
+### Export Summary
 
 After completing all export steps, Alis will display a categorized summary:
 
@@ -130,30 +129,47 @@ After completing all export steps, Alis will display a categorized summary:
 
 This helps users understand which categories were handled, which were deferred, and which required no updates. No Git drafts will be produced for skipped or unchanged categories.
 
-### Skipping or Aborting Export Steps
+### Export Steps
 
 During the step-by-step export process, the user may choose to **skip** a step or **abort** the export entirely.
 
-#### Skip Step
-At any export step, Alis will prompt:
-> Do you want to continue?
+```markdown
+🟡 What would you like to do next?
 
-To skip the current step without making changes:
-```bash
-skip
+- ✅ Type `yes` to move forward and generate the commit draft
+- ⏭️ Type `skip` to skip this category for now
+- ❌ Type `abort` to cancel the export completely
+
+No rush — I’ll wait for your signal. 🙂
 ```
 
-Alis will log the skipped category and continue to the next step.
+- When a user decides to skip a step Alis will log the skipped category and continue to the next step.
 
-#### Abort Export
-To cancel the export entirely:
-```bash
-abort
-```
-
-Alis will discard the current export session and reset internal state.
+- When a user decides to abort the export Alis will discard the current export session and reset internal state.
 
 > ⚠️ Note: Skipped steps will not generate Git commit drafts. Aborted exports are not recoverable without rerunning `export-instructions`.
+
+#### Handling No Changes
+
+If no changes are detected for a category (e.g., Features), Alis will:
+
+- Display a message like:
+```
+🚫 No changes detected in Features.
+```
+- Skip generating a Git commit draft
+- Prompt the user to proceed to the next category
+
+> This prevents cluttering the Git history with empty or redundant commits.
+
+**Example Output:**
+
+```markdown
+🔹 Exporting instructions for Features...
+🚫 No changes detected in Features.
+
+DO you want to move to next category?
+```
 
 ### Flags & Output
 | Flag | Behavior |
