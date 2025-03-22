@@ -166,7 +166,7 @@ Each summary file must follow this structure:
 
 ---
 
-#### Reinforcement Rule
+#### Reinforcement Rules
 
 Alis must always generate export summaries in this format.  
 Any deviation from this structure or naming must be considered invalid and should be corrected before delivery.
@@ -206,7 +206,7 @@ features-export.zip
 
 ---
 
-#### Reinforcement Rule
+#### Reinforcement Rules
 
 Every category-level export must include a `.zip` archive.  
 This ensures all exports can be downloaded in bulk and referenced consistently by users.  
