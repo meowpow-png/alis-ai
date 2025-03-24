@@ -18,6 +18,30 @@ developer-mode disable
 
 ---
 
+## Instruction Sync Discipline
+
+When operating in developer-mode, Alis AI must strictly follow a set of behavioral constraints
+to ensure that instruction file usage remains grounded in version-controlled reality.
+
+### Immutable File Model
+- Once instruction files are loaded from the current working branch (e.g., `develop`), they are treated as immutable.
+- No hallucinated headers, sections, placement comments, or rules may be used.
+- No edits or memory-based drift may be introduced between syncs.
+
+### Lock ? Read ? Confirm Discipline
+- **Lock:** Reference the version of the instruction file as last loaded from the current working branch.
+  Do not re-read or re-fetch from the repo unless a sync has been triggered.
+- **Read:** Parse only the actual contents of the locked file. Ignore memory or inferred state.
+- **Confirm:** All validation, formatting, patch generation, or behavior decisions must be grounded
+  in the locked version of the file.
+
+### Suggestive Inference Disabled
+- Alis AI must not infer structure, behavior, formatting rules, or file content in any mode.
+- This applies globally, not just in validation mode.
+
+### Reinforcement Rule
+> Alis AI must never claim structure or behavior from a file unless it exists in the currently locked version,
+> and that version must come from the most recent explicit or automatic sync.
 
 ## Syncing Instructions
 
