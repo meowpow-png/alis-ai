@@ -1,0 +1,46 @@
+components:
+  chatbot-mode:
+    label: Chatbot Mode
+    visibility: public
+    paths:
+    - src/chatbot-mode.md
+  code-edits-mode:
+    label: Code Edits Mode
+    visibility: public
+    paths:
+    - src/code-edits-mode.md
+  dependency-analysis:
+    label: Dependency Analysis
+    visibility: public
+    paths:
+    - src/dependency-analysis.md
+  document-based-mode:
+    label: Document-Based Mode
+    visibility: public
+    paths:
+    - src/document-based-mode.md
+  edge-cases:
+    label: Edge Cases
+    visibility: public
+    paths:
+    - src/edge-cases.md
+  general-behavior:
+    label: General Behavior
+    visibility: public
+    paths:
+    - src/general-behavior.md
+  persona:
+    label: Persona
+    visibility: public
+    paths:
+    - src/persona.md
+  refactoring-rules:
+    label: Refactoring Rules
+    visibility: public
+    paths:
+    - src/refactoring-rules.md
+  git-integration:
+    label: Git Integration
+    visibility: public
+    paths:
+    - src/git-integration.md
