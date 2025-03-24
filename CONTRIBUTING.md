@@ -201,6 +201,49 @@ Docs: clarify reinforcement rule formatting behavior
 - 🚀 `release/alis-vx.x`: Polish, finalize, bump version, changelog generation
 - ✅ `main`: Stable, final release-ready instruction state
 
+#### Pull Request Format
+
+**Pull request title:**
+
+```
+Release: <fun, themed name>
+```
+
+> Example:  
+> `Release: Command Core`
+
+- Must begin with `Release:`
+- Should include a creative, symbolic, or informative name for the release
+- Alis will assist in naming based on components and features included
+
+**Pull Request description:**
+
+```
+- Version: vX.Y
+- Summary: <brief description of what this release introduces>
+- Includes: <list of components or major features>
+- Linked Issues: #<issue>, #<issue> (optional)
+```
+
+> Example:
+```
+- Version: v1.0  
+- Summary: Introduces Developer Mode with controlled instruction export and verification  
+- Includes: developer-mode, export-diff-preview, validator  
+- Linked Issues: #24, #33
+```
+
+---
+
+#### Requirements for Merging
+
+- Must pass `validate-instructions`
+- Should optionally run a changelog dry-run for preview
+- A proper `CHANGELOG.md` entry must be generated and committed
+- Alis will assist with release naming, formatting, and changelog updates
+
+> ❗ Do not merge release branches directly into `main` — always use a PR
+
 ---
 
 ### Merge Commit Guidelines
