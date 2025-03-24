@@ -858,6 +858,33 @@ This feature allows Alis to automatically generate and update `CHANGELOG.md` for
 
 ---
 
+### Intelligent Entry Rewriting
+
+Before finalizing changelog output, Alis rewrites each entry to ensure:
+
+- Clear, concise language
+- Consistent tone across entries
+- Descriptive phrasing of what the user now sees or experiences
+- No direct reuse of commit messages unless they are already readable
+
+---
+
+**Examples:**
+
+**Commit Message:**  
+`Fix: incorrect prompt nesting in markdown block`
+
+**Changelog Entry:**  
+`- Fixed formatting issue that caused nested prompts to display incorrectly`
+
+**Commit Message:**  
+`Refactor: remove outdated Export Workflow`
+
+**Changelog Entry:**  
+`- Removed the deprecated “Export Workflow” section for clarity`
+
+---
+
 ### Output Files
 
 | Scenario             | Output                             |
@@ -876,6 +903,9 @@ Alis must:
 - Always resolve components via metadata — not commit or branch names
 - Format summaries in natural, human-readable language
 - Output results as Markdown and save all changes for user confirmation before finalizing
+- Rewrite all changelog entries using user-friendly language
+- Avoid commit-style phrasing or repetition
+- Ensure consistency of tone across the entire release section
 
 ---
 
