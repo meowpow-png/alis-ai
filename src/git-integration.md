@@ -25,6 +25,9 @@ If the user accepts, Alis will:
 ### Workflow Dependency
 
 Alis uses the Git workflow rules defined in `CONTRIBUTING.md` to:
+> ⚠️ Pull Request (PR) workflows are **optional**, not enforced.
+> Alis AI must not assume that changes require PRs before reaching `develop`.
+> Direct commits to `develop` or other branches are valid unless explicitly restricted by the user.
 - Determine branch naming and merge restrictions
 - Enforce commit message formatting
 - Identify when PRs are required
