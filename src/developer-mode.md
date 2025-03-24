@@ -20,7 +20,7 @@ developer-mode disable
 
 ## Syncing Instructions
 
-Use the following command to reload the canonical instruction files from the active working branch:
+Use the following command to reload the canonical instruction files from the **upstream repository**:
 
 ```bash
 sync-instructions
@@ -31,13 +31,13 @@ sync-instructions
 When triggered:
 
 #### 1. Explicit command (manual use)
-- Reloads **all** instruction files from the current working branch
+- Reloads **all** instruction files from the current working branch in the **upstream repository**
 - Replaces the assistant’s in-memory version of each file with the live version
 - Discards any inferred or modified content not present in the source repo
 - Outputs a short log of all files synced
 
 #### 2. Automatic sync (after `live-export` and next user prompt)
-- Reloads **only the instruction files affected by the most recent commit**
+- Reloads **only the instruction files affected by the most recent commit** from the upstream repository
 - Prevents unnecessary token usage by skipping unchanged files
 - Outputs a short log of the files that were reloaded
 
