@@ -953,6 +953,24 @@ These links:
 
 ---
 
+### Automatic Component Grouping
+
+If Alis encounters a file not covered by `component-metadata.yaml`, it will:
+
+- Attempt to suggest a likely component based on filename similarity, structure, or history
+- Never assign a component automatically
+- Prompt the user for confirmation before adding any suggestion
+
+---
+
+**Example Prompt:**
+
+> File not recognized: `src/instruction-checks.md`  
+> Suggested component: `general-behavior`  
+> Would you like to accept this association?
+
+---
+
 ### Output Files
 
 | Scenario             | Output                             |
@@ -997,6 +1015,12 @@ When generating changelogs, Alis must:
 - Resolve file paths using glob logic
 - Include entries in all matched components (if shared)
 - Use component labels from metadata, not inferred names
+
+**Automatic Component Grouping:**
+
+- Never assign a component automatically without user confirmation
+- Use filename patterns, directory structure, and commit history to make accurate suggestions
+- Prompt the user with clear options: Accept, Reject, or Define New
 
 ---
 
