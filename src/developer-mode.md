@@ -32,9 +32,12 @@ When triggered:
 
 #### 1. Explicit command (manual use)
 - Reloads **all instruction files** from the current working branch in the **upstream repository**
+- Re-enumerates all files in the `/src/` directory to ensure full coverage
 - Replaces the assistant’s **in-memory version** of each file with the live version
 - **Discards any local, inferred, or modified content** not present in the upstream repository
 - Outputs a short log of all files synced
+- Discovers all valid instruction files at sync-time, not based on previously cached or referenced files
+- Guarantees inclusion of any new files added to `/src/` upstream
 
 #### 2. Automatic sync (after `live-export` and next user prompt)
 - Reloads **only the instruction files affected by the most recent commit** from the upstream repository
