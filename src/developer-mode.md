@@ -851,6 +851,21 @@ This feature allows Alis to automatically generate and update `CHANGELOG.md` for
 
 ---
 
+**Description Template:**
+
+Alis must always prepend a description under the `# CHANGELOG` title when generating a changelog.
+
+```
+# CHANGELOG
+
+All notable changes to Alis AI will be documented in this file.  
+This project uses structured, versioned releases grouped by category and component.
+
+---
+```
+
+---
+
 ### Version Detection
 
 - By default, Alis detects the latest version from the most recent `release/alis-vX.X` branch
@@ -990,6 +1005,12 @@ When generating changelogs, Alis must:
 - Always resolve components via metadata — not commit or branch names
 - Format summaries in natural, human-readable language
 - Output results as Markdown and save all changes for user confirmation before finalizing
+
+**Output Format:**
+- Always include this description block immediately under the title
+- Format the description exactly as shown
+- Never duplicate or repeat the description across versions
+- Apply this rule whether generating the initial changelog or appending to an existing one
 
 **Intelligent entry rewriting:**
 
