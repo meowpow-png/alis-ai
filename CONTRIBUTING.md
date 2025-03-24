@@ -318,3 +318,7 @@ Alis automatically generates changelog entries based on commit messages and chan
 ---
 
 🛡️ Alis uses changelog entries as part of its behavioral record. Clean, descriptive commits and consistent prefix usage ensure accurate version history.
+
+---
+
+📘 For a fast step-by-step summary, see [Release Quickstart](release-quickstart.md)
