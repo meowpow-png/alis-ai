@@ -299,11 +299,11 @@ Alis automatically generates changelog entries based on commit messages and chan
 > Commit: Add: export skip and abort step logic
 > Files: src/developer-mode.md
 > ```
-> 
+>
 > Will generate:
 >
 > ### 🆕 Features  
-> #### 🧩 developer-mode  
+> #### 🧩 Developer Mode  
 > - Add: export skip and abort step logic
 
 ---
