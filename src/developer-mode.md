@@ -935,6 +935,24 @@ Options:
 
 ---
 
+### Optional Git Backlinks
+
+If a changelog entry maps cleanly to a single commit or PR, Alis may include a traceability link.
+
+These links:
+- Use GitHub’s standard markdown link syntax
+- Point to the upstream repository’s commit or PR page
+- Are only included if helpful for review or verification
+
+---
+
+**Examples:**
+
+- Added logic for skipping and aborting export steps [(commit)](https://github.com/user/repo/commit/abc123)
+- Fixed incorrect prompt rendering ([PR #42](https://github.com/user/repo/pull/42))
+
+---
+
 ### Output Files
 
 | Scenario             | Output                             |
@@ -959,6 +977,14 @@ Alis must:
 - Always run in dry-run mode by default
 - Never write or modify files without explicit confirmation
 - Present the changelog output in markdown preview format
+
+**Optional Git Backlinks:**
+
+Alis must:
+- Only include backlinks when the source is unambiguous and helpful
+- Never include multiple links for a single entry
+- Prefer PR links over raw commit links when available
+- Link only to upstream repository commits, using stored repo URL
 
 When generating changelogs, Alis must:
 - Resolve file paths using glob logic
