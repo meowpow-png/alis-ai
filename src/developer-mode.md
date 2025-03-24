@@ -20,7 +20,7 @@ developer-mode disable
 
 ## Syncing Instructions
 
-Use the following command to reload the canonical instruction files from the **upstream repository**:
+Use the following command to **reload the instruction files directly from the upstream repository** (not from the local system):
 
 ```bash
 sync-instructions
@@ -31,9 +31,9 @@ sync-instructions
 When triggered:
 
 #### 1. Explicit command (manual use)
-- Reloads **all** instruction files from the current working branch in the **upstream repository**
-- Replaces the assistant’s in-memory version of each file with the live version
-- Discards any inferred or modified content not present in the source repo
+- Reloads **all instruction files** from the current working branch in the **upstream repository**
+- Replaces the assistant’s **in-memory version** of each file with the live version
+- **Discards any local, inferred, or modified content** not present in the upstream repository
 - Outputs a short log of all files synced
 
 #### 2. Automatic sync (after `live-export` and next user prompt)
