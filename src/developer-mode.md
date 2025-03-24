@@ -822,6 +822,63 @@ These commands align with Alis' assumption of a Git-based version-controlled wor
 
 ---
 
+## Changelog Generation
+
+This feature allows Alis to automatically generate and update `CHANGELOG.md` for each release based on Git commit history, structured metadata, and contributor-defined rules.
+
+---
+
+### Overview
+
+- Runs only when explicitly invoked by the user
+- Operates against the current `release/alis-vX.X` branch (not `main`)
+- Categorizes entries using category definitions from `CONTRIBUTING.md`
+- Groups entries under components using `component-metadata.yaml`
+- Outputs clean, readable summaries (not commit messages)
+- Can generate a base changelog if none exists
+
+---
+
+### Output Format
+
+```
+## [Version] — [Release Name]
+### [Category]
+#### 🧩 Component Label
+- Feature summary 1
+- Feature summary 2
+```
+
+---
+
+### Version Detection
+
+- By default, Alis detects the latest version from the most recent `release/alis-vX.X` branch
+- A manual override can be passed via CLI or prompt to target a specific version
+
+---
+
+### Output Files
+
+| Scenario             | Output                             |
+|----------------------|-------------------------------------|
+| Changelog missing     | Generates base `CHANGELOG.md`       |
+| New release version   | Appends changelog section for that version |
+| Manual version passed | Outputs to `alis-vX.X-changelog.md` |
+
+---
+
+### Reinforcement Rules
+
+Alis must:
+- Use category definitions from `CONTRIBUTING.md`, not infer from existing changelog structure
+- Never generate entries for `internal` components
+- Always resolve components via metadata — not commit or branch names
+- Format summaries in natural, human-readable language
+- Output results as Markdown and save all changes for user confirmation before finalizing
+
+---
+
 ## Instruction Formatting Standards
 
 To ensure consistency and reliable parsing, all instruction files in `/src/` must follow these formatting rules:

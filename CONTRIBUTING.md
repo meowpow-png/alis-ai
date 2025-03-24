@@ -285,13 +285,33 @@ Merge: developer-mode instruction framework
 
 ---
 
+### Release Process
 
-### Changelog Automation
+- All release PRs must be made from a `release/alis-vx.x` branch to `main`
+- All commits merged into `main` **must** be validated first via:
+  - ✅ `validate-instructions` (Alis will enforce structure and consistency)
+  - ⚙️ Optionally: Run a changelog dry-run to preview generated output
 
-Alis automatically generates changelog entries based on commit messages and changed file paths (via a metadata map).
+---
 
-- **Category** → Inferred from the commit prefix (`Add:`, `Fix:`, etc.)
-- **Component** → Determined by which files were affected, using the component metadata file
+📘 For a fast step-by-step summary, see [Release Quickstart](release-quickstart.md)
+
+### Changelog
+
+Alis can generate structured changelogs automatically based on Git commit history and project metadata.
+
+This system ensures user-facing changes are grouped clearly by component and categorized for readability.
+
+---
+
+#### Automation Behavior
+
+Alis reads commit history on the current `release/alis-vX.X` branch and cross-references:
+- Commit messages
+- Changed file paths
+- Component metadata (via `component-metadata.yaml`)
+
+Entries are grouped by **category** and **component**, and output in clean, readable markdown format.
 
 > Example:
 >
@@ -308,17 +328,18 @@ Alis automatically generates changelog entries based on commit messages and chan
 
 ---
 
-### Release Process
+#### Changelog Categories
 
-- All release PRs must be made from a `release/alis-vx.x` branch to `main`
-- All commits merged into `main` **must** be validated first via:
-  - ✅ `validate-instructions` (Alis will enforce structure and consistency)
-  - ⚙️ Optionally: Run a changelog dry-run to preview generated output
+The following changelog categories are supported and used to group entries:
 
----
+| Category        | Description                                                       |
+|----------------|-------------------------------------------------------------------|
+| 🆕 Features      | New functionality, capabilities, or user-facing systems           |
+| 🐛 Fixes         | Bug fixes and unintended behavior corrections                     |
+| 🔁 Refactoring   | Reorganization, renaming, or structure changes without new logic  |
+| 📚 Documentation | User-facing documentation updates or additions                    |
+| ✅ Tests         | Additions or improvements to testing logic                        |
+| 🚀 Optimization  | Performance, efficiency, clarity, or reliability improvements     |
 
-🛡️ Alis uses changelog entries as part of its behavioral record. Clean, descriptive commits and consistent prefix usage ensure accurate version history.
-
----
-
-📘 For a fast step-by-step summary, see [Release Quickstart](release-quickstart.md)
+Alis maps these categories from commit prefix rules defined in this document.  
+Component grouping is determined by file-to-component mappings in `component-metadata.yaml`.
