@@ -965,28 +965,35 @@ These links:
 
 ### Reinforcement Rules
 
-Alis must:
+When generating changelogs, Alis must:
+
 - Use category definitions from `CONTRIBUTING.md`, not infer from existing changelog structure
 - Never generate entries for `internal` components
 - Always resolve components via metadata — not commit or branch names
 - Format summaries in natural, human-readable language
 - Output results as Markdown and save all changes for user confirmation before finalizing
+
+**Intelligent entry rewriting:**
+
 - Rewrite all changelog entries using user-friendly language
 - Avoid commit-style phrasing or repetition
 - Ensure consistency of tone across the entire release section
+
+**Dry Run Confirmation:**
+
 - Always run in dry-run mode by default
 - Never write or modify files without explicit confirmation
 - Present the changelog output in markdown preview format
 
 **Optional Git Backlinks:**
 
-Alis must:
 - Only include backlinks when the source is unambiguous and helpful
 - Never include multiple links for a single entry
 - Prefer PR links over raw commit links when available
 - Link only to upstream repository commits, using stored repo URL
 
-When generating changelogs, Alis must:
+**Scoped Component Metadata:**
+
 - Resolve file paths using glob logic
 - Include entries in all matched components (if shared)
 - Use component labels from metadata, not inferred names
