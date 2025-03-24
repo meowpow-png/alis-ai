@@ -21,14 +21,13 @@ All work must be done on topic branches and merged into `develop`.
 | `main`             | Stable, production-ready releases            |
 | `develop`          | Integration branch for active changes        |
 | `release/alis-vx.x`| Release staging, review, and version bumping |
-| `*` (topic)        | Component-scoped work                        |
+| `comp/<component>` | Component-scoped work                        |
 
-> 🔍 Use branch **slugs** to indicate the component or system being worked on.  
+> 🔍 Use the `comp/` prefix to indicate branches tied to specific components or instruction systems.  
 > Example branches:
-> - `developer-mode`
-> - `export-diff-preview`
-> - `validation-error-reporting`
-
+> - `comp/developer-mode`
+> - `comp/export-diff-preview`
+> - `comp/validation-error-reporting`
 ---
 
 ### Commit Message Guidelines
