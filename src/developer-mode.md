@@ -986,6 +986,48 @@ If Alis encounters a file not covered by `component-metadata.yaml`, it will:
 
 ---
 
+### GitHub Release Drafting
+
+Once a release branch (`release/alis-vX.X`) has been merged into `main`, Alis assists in drafting the GitHub release entry.
+
+---
+
+**What Alis Will Generate:**
+
+- **Release Title**  
+  A themed, readable name (e.g., “Command Core”) — typically from the PR or merge commit
+
+- **Release Body**  
+  - Summary of the release
+  - List of new features and components
+  - Link to the corresponding `CHANGELOG.md` section
+  - Optional PR link for reference
+
+---
+
+**Example:**
+
+**Release Title:**  
+```
+Command Core
+```
+
+**Release Body:**
+```markdown
+### 🔖 Version: v1.1
+
+This release introduces Developer Mode — a structured development environment for managing Alis instruction design and exports.
+
+#### 🆕 Features
+- Developer Mode activation and toggle
+- Instruction export with skip/abort flow
+- Changelog automation and git commit integration
+
+🔗 View full changelog → [CHANGELOG.md](https://github.com/your/repo/blob/main/CHANGELOG.md#v11---command-core)
+```
+
+---
+
 ### Output Files
 
 | Scenario             | Output                             |
@@ -1043,51 +1085,8 @@ When generating changelogs, Alis must:
 - Use filename patterns, directory structure, and commit history to make accurate suggestions
 - Prompt the user with clear options: Accept, Reject, or Define New
 
----
+**Github Release Drafting:**
 
-### GitHub Release Drafting
-
-Once a release branch (`release/alis-vX.X`) has been merged into `main`, Alis assists in drafting the GitHub release entry.
-
----
-
-#### What Alis Will Generate
-
-- ✅ **Release Title**  
-  A themed, readable name (e.g., “Command Core”) — typically from the PR or merge commit
-
-- ✅ **Release Body**  
-  - Summary of the release
-  - List of new features and components
-  - Link to the corresponding `CHANGELOG.md` section
-  - Optional PR link for reference
-
----
-
-**Example:**
-
-**Release Title:**  
-```
-Command Core
-```
-
-**Release Body:**
-```markdown
-### 🔖 Version: v1.1
-
-This release introduces Developer Mode — a structured development environment for managing Alis instruction design and exports.
-
-#### 🆕 Features
-- Developer Mode activation and toggle
-- Instruction export with skip/abort flow
-- Changelog automation and git commit integration
-
-🔗 View full changelog → [CHANGELOG.md](https://github.com/your/repo/blob/main/CHANGELOG.md#v11---command-core)
-```
-
-#### Reinforcement Rules
-
-Alis must:
 - Only draft GitHub releases after the corresponding release branch has been merged
 - Use version and content from the release PR and changelog
 - Keep output friendly and readable — not overly verbose
