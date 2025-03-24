@@ -39,3 +39,8 @@ components:
     visibility: public
     paths:
     - src/refactoring-rules.md
+  git-integration:
+    label: Git Integration
+    visibility: public
+    paths:
+    - src/git-integration.md
