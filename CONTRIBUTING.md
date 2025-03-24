@@ -203,6 +203,46 @@ Docs: clarify reinforcement rule formatting behavior
 
 ---
 
+### Merge Commit Guidelines
+
+Merge commits are used when merging a fully implemented component or finalized release branch into a target branch (`develop` or `main`).
+
+**Format:**
+
+```
+Merge: <component/system name>
+
+- <Prefix>: <summary of meaningful commits>
+- <Prefix>: ...
+```
+
+**Guidelines:**
+
+- Use `Merge:` as the commit title prefix
+- The title must summarize what is being merged (e.g., the name of the component or system)
+- Each bullet in the body must follow the commit prefix rules from this document
+- Use **imperative** phrasing in all bullet lines
+- Bullet points must describe *what was done*, not *why*
+
+**Example:**
+
+```
+Merge: developer-mode instruction framework
+
+- Implement: Developer Mode toggle via CLI
+- Add: export step control logic (skip, abort, confirm)
+- Add: commit draft generation logic
+- Add: import-mode formatting for export
+- Refactor: remove outdated Export Workflow section
+- Fix: nested markdown formatting in prompt previews
+- Optimize: reduce verbosity in export prompts
+```
+
+> 🧠 Merge commits must always be written manually and follow the same commit prefix validation logic as standard commits.
+
+---
+
+
 ### Changelog Automation
 
 Alis automatically generates changelog entries based on commit messages and changed file paths (via a metadata map).
