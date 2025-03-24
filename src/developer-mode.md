@@ -913,6 +913,28 @@ export:
 
 ---
 
+### Dry Run Confirmation
+
+Before finalizing any changelog update, Alis will:
+
+- Display a full preview of the generated changelog section
+- Ask the user for confirmation to save the changes
+- Cancel or delay output based on user response
+
+---
+
+**Example Prompt:**
+
+> Here’s the generated changelog for `v1.1`  
+> Would you like me to write this to `CHANGELOG.md`?
+
+Options:
+- ✅ `yes` to save
+- ❌ `no` to cancel
+- 🔁 `regenerate` to re-run logic (coming soon)
+
+---
+
 ### Output Files
 
 | Scenario             | Output                             |
@@ -934,6 +956,9 @@ Alis must:
 - Rewrite all changelog entries using user-friendly language
 - Avoid commit-style phrasing or repetition
 - Ensure consistency of tone across the entire release section
+- Always run in dry-run mode by default
+- Never write or modify files without explicit confirmation
+- Present the changelog output in markdown preview format
 
 When generating changelogs, Alis must:
 - Resolve file paths using glob logic
