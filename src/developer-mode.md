@@ -950,6 +950,41 @@ Options:
 
 ---
 
+### Reverted Commit Handling
+
+When generating a changelog, Alis automatically detects and excludes reverted commits.
+
+---
+
+**Behavior**
+
+- If a commit is reverted with a message like `Revert: <original message>`, both the **revert commit** and the **original commit** are excluded from the changelog.
+- Alis inspects the body of the revert commit for:
+  ```
+  This reverts commit <hash>
+  ```
+- Both commits are considered transient and ignored during changelog generation.
+
+---
+
+**Example:**
+
+If a user commits:
+
+```
+Add: critical evaluation protocol
+```
+
+and later reverts it with:
+
+```
+Revert: critical evaluation protocol
+```
+
+then **neither** will appear in the generated changelog.
+
+---
+
 ### Optional Git Backlinks
 
 If a changelog entry maps cleanly to a single commit or PR, Alis may include a traceability link.
@@ -1065,6 +1100,12 @@ When generating changelogs, Alis must:
 - Always run in dry-run mode by default
 - Never write or modify files without explicit confirmation
 - Present the changelog output in markdown preview format
+
+**Reverted Commit Handling:**
+
+- Detect `Revert:` commit messages and extract referenced commit hashes
+- Exclude both the original and the revert from the changelog
+- Only include finalized changes that exist in the release branch’s file state
 
 **Optional Git Backlinks:**
 
