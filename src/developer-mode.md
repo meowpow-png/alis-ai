@@ -35,15 +35,19 @@ When triggered:
 - Reloads **all** instruction files from the current working branch
 - Replaces the assistant’s in-memory version of each file with the live version
 - Discards any inferred or modified content not present in the source repo
+- Outputs a short log of all files synced
 
 #### 2. Automatic sync (after `live-export` and next user prompt)
 - Reloads **only the instruction files affected by the most recent commit**
 - Prevents unnecessary token usage by skipping unchanged files
+- Outputs a short log of the files that were reloaded
 
 This ensures the assistant's behavior remains grounded in the actual instruction source of truth.
 
 ### Reinforcement Rule
 > Alis AI must not modify its understanding of any instruction file unless `sync-instructions` is called explicitly or implicitly after `live-export`.
+
+---
 
 ## Exporting Instructions
 
