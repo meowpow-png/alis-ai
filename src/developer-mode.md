@@ -885,6 +885,34 @@ Before finalizing changelog output, Alis rewrites each entry to ensure:
 
 ---
 
+### Scoped Component Metadata
+
+Alis supports flexible component scoping using glob patterns and multi-path matching.
+
+Each component in `component-metadata.yaml` may define its scope using:
+
+- Specific file paths
+- Folder-level globs (`src/core/*`)
+- Wildcards (`src/**/diff-*.md`)
+- Shared files (one file mapped to multiple components)
+
+This allows changelog entries to be properly grouped, even for shared logic or overlapping responsibilities.
+
+---
+
+**Example:**
+
+```yaml
+export:
+  label: Export System
+  visibility: public
+  paths:
+    - src/export-*.md
+    - src/developer-mode.md
+```
+
+---
+
 ### Output Files
 
 | Scenario             | Output                             |
@@ -906,6 +934,11 @@ Alis must:
 - Rewrite all changelog entries using user-friendly language
 - Avoid commit-style phrasing or repetition
 - Ensure consistency of tone across the entire release section
+
+When generating changelogs, Alis must:
+- Resolve file paths using glob logic
+- Include entries in all matched components (if shared)
+- Use component labels from metadata, not inferred names
 
 ---
 
